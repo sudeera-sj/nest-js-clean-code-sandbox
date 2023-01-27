@@ -1,5 +1,5 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { ResponsePayloadStatus } from "@shared/models/api/response-payload-status.model";
+import {ApiProperty} from '@nestjs/swagger';
+import {ResponsePayloadStatus} from '@shared/models/api/response-payload-status.model';
 
 /**
  * Base model for API responses

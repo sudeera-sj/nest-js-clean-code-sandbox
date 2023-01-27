@@ -1,7 +1,7 @@
-import { CanActivate, ExecutionContext, Injectable, Logger } from "@nestjs/common";
-import { Reflector } from "@nestjs/core";
-import { Request } from "@shared/models/api/request.model";
-import { PUBLIC, SKIP_AUTHENTICATION } from "@constants/decorator-key.constants";
+import {CanActivate, ExecutionContext, Injectable, Logger} from '@nestjs/common';
+import {Reflector} from '@nestjs/core';
+import {Request} from '@shared/models/api/request.model';
+import {PUBLIC, SKIP_AUTHENTICATION} from '@constants/decorator-key.constants';
 
 /**
  * Used globally to authenticate and authorize all endpoints that aren't marked with @Public
