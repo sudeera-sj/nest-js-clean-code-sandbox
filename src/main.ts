@@ -10,8 +10,8 @@ import {ApiErrorFilter} from '@filters/api-error.filter';
 import {EnvironmentConfig} from '@shared/models/env/environment-config.model';
 
 const title = `nest-js-clean-code-sandbox`;
-const description = `NestJS Clean Code Sandbox`;
-const version = `0.0.1`;
+const description = `A clean code sandbox developed with NestJs`;
+const version = `0.0.2`;
 
 const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);

@@ -8,26 +8,29 @@ import {ResponsePayloadStatus} from '@shared/models/api/response-payload-status.
 export class ApiErrorFilter implements ExceptionFilter {
   private readonly logger = new Logger(ApiErrorFilter.name);
 
-  catch(error: Error, host: ArgumentsHost): void {
-    const httpArgumentsHost = host.switchToHttp();
-
-    const request = httpArgumentsHost.getRequest<Request>();
-    const response = httpArgumentsHost.getResponse<Response>();
-
-    const method = request.method.toUpperCase();
-    const path = request.path.toLowerCase();
-    const time = request.start ? Date.now() - request.start : 0;
-
+  private calculateErrorStatus(error: Error): number {
     let status = error instanceof HttpException && error.getStatus ? error.getStatus() : 500;
 
+    if (axios.isAxiosError(error)) {
+      const axiosError = error as AxiosError;
+
+      if (axiosError.response) {
+        status = axiosError.response.status;
+      }
+    }
+
+    return status;
+  }
+
+  private extractErrorData(error: Error) {
     let exceptionResponse: any;
+
     if (error instanceof HttpException && error.getResponse) {
       exceptionResponse = error.getResponse();
     } else if (axios.isAxiosError(error)) {
       const axiosError = error as AxiosError;
 
       if (axiosError.response) {
-        status = axiosError.response.status;
         exceptionResponse = axiosError.response.data;
       } else {
         exceptionResponse = null;
@@ -46,6 +49,22 @@ export class ApiErrorFilter implements ExceptionFilter {
     } else {
       data = null;
     }
+
+    return data;
+  }
+
+  catch(error: Error, host: ArgumentsHost): void {
+    const httpArgumentsHost = host.switchToHttp();
+
+    const request = httpArgumentsHost.getRequest<Request>();
+    const response = httpArgumentsHost.getResponse<Response>();
+
+    const method = request.method.toUpperCase();
+    const path = request.path.toLowerCase();
+    const time = request.start ? Date.now() - request.start : 0;
+
+    const status = this.calculateErrorStatus(error);
+    const data = this.extractErrorData(error);
 
     this.logger.log(`${method} ${path} => ${status}. Took ${time} ms`);
     this.logger.error(error);
