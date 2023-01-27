@@ -3,6 +3,7 @@ import {Logger, RequestMethod, ValidationPipe, VersioningType} from '@nestjs/com
 import {ConfigService} from '@nestjs/config';
 import {DocumentBuilder, SwaggerModule} from '@nestjs/swagger';
 import helmet from 'helmet';
+import moment from 'moment';
 import {AppModule} from '@app/app.module';
 import {ApiResponseInterceptor} from '@interceptors/api-response.interceptor';
 import {ApiErrorFilter} from '@filters/api-error.filter';
@@ -59,9 +60,9 @@ const bootstrap = async () => {
 
   await app.listen(configService.get('PORT'));
 
-  const currentTime = new Date();
+  const currentTime = moment();
 
-  Logger.log(`UTC Offset: ${currentTime.getTimezoneOffset()}`);
+  Logger.log(`UTC Offset: ${currentTime.utcOffset()}`);
   Logger.log(`Port: ${configService.get('PORT')}`);
   Logger.log(`Node environment: ${configService.get('NODE_ENV')}`);
 };
