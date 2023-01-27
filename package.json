@@ -1,7 +1,7 @@
 {
   "name": "nest-js-clean-code-sandbox",
-  "version": "0.0.1",
-  "description": "NestJS Clean Code Sandbox",
+  "version": "0.0.2",
+  "description": "A clean code sandbox developed with NestJs",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
