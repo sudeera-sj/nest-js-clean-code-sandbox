@@ -1,18 +1,26 @@
 import {Test, TestingModule} from '@nestjs/testing';
-import {AppController} from './app.controller';
+import {AppController} from '@app/app.controller';
+import {AppService} from '@app/app.service';
 
 describe('AppController', () => {
-  let controller: AppController;
+  let module: TestingModule;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    module = await Test.createTestingModule({
       controllers: [AppController],
+      providers: [AppService],
     }).compile();
-
-    controller = module.get<AppController>(AppController);
   });
 
   it('should be defined', () => {
+    const controller = module.get<AppController>(AppController);
+
     expect(controller).toBeDefined();
+  });
+
+  it('should warmup the server', () => {
+    const controller = module.get<AppController>(AppController);
+
+    expect(controller.warmup()).toBe(`Warming up the application server`);
   });
 });
