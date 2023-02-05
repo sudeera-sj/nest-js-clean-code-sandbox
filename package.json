@@ -1,6 +1,6 @@
 {
   "name": "nest-js-clean-code-sandbox",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A clean code sandbox developed with NestJs",
   "private": true,
   "license": "UNLICENSED",
@@ -14,7 +14,7 @@
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest --setupFiles dotenv/config",
     "test:watch": "jest --setupFiles dotenv/config --watch",
-    "test:cov": "jest --coverage",
+    "test:cov": "jest --setupFiles dotenv/config --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
