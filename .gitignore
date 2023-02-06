@@ -5,6 +5,9 @@
 # Scripts
 .scripts
 
+# Sonar
+.scannerwork
+
 # compiled output
 /dist
 /node_modules
@@ -36,10 +39,10 @@ lerna-debug.log*
 
 # IDE - VSCode
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json!/yarn.lock
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json!/yarn.lock
 
 # Version control lock files
 package-lock.json
