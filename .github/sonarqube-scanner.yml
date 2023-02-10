@@ -1,3 +1,5 @@
+name: Analyse and review the source code with Sonarqube
+
 on:
   # Trigger analysis when pushing to your main branches, and when creating a pull request.
   push:
@@ -6,8 +8,8 @@ on:
       - common
   pull_request:
     types: [ opened, synchronize, reopened ]
+  workflow_dispatch:
 
-name: Analyse and review the source code
 jobs:
   sonarqube:
     runs-on: ubuntu-latest
