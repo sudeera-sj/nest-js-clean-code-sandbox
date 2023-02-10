@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - master
-      - common
   pull_request:
     types: [ opened, synchronize, reopened ]
   workflow_dispatch:
@@ -20,8 +19,6 @@ jobs:
           fetch-depth: 0
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
-        with:
-          projectBaseDir: src
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
