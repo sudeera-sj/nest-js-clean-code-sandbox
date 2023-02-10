@@ -11,7 +11,7 @@ import {EnvironmentConfig} from '@shared/models/env/environment-config.model';
 
 const title = `nest-js-clean-code-sandbox`;
 const description = `A clean code sandbox developed with NestJs`;
-const version = `0.0.3`;
+const version = `0.0.4`;
 
 const bootstrap = async () => {
   const app = await NestFactory.create(AppModule);
