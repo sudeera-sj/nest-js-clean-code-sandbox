@@ -1,5 +1,13 @@
-import {ApiErrorFilter} from './api-error.filter';
+import {ApiErrorFilter} from '@filters/api-error.filter';
 
 describe('ApiErrorFilter', () => {
-  it('should be defined', () => {});
+  let filter: ApiErrorFilter;
+
+  beforeEach(() => {
+    filter = new ApiErrorFilter();
+  });
+
+  it('should be defined', () => {
+    expect(filter).toBeDefined();
+  });
 });
