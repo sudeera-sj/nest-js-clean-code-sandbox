@@ -1,5 +1,13 @@
-import {ApiResponseInterceptor} from './api-response.interceptor';
+import {ApiResponseInterceptor} from '@interceptors/api-response.interceptor';
 
 describe('ApiResponseInterceptor', () => {
-  it('should be defined', () => {});
+  let interceptor: ApiResponseInterceptor<any>;
+
+  beforeEach(() => {
+    interceptor = new ApiResponseInterceptor<any>();
+  });
+
+  it('should be defined', () => {
+    expect(interceptor).toBeDefined();
+  });
 });

@@ -4,23 +4,28 @@ import {AppService} from '@app/app.service';
 
 describe('AppController', () => {
   let module: TestingModule;
+  let controller: AppController;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     module = await Test.createTestingModule({
       controllers: [AppController],
       providers: [AppService],
     }).compile();
   });
 
-  it('should be defined', () => {
-    const controller = module.get<AppController>(AppController);
+  beforeEach(() => {
+    controller = module.get<AppController>(AppController);
+  });
 
+  afterAll(async () => {
+    await module.close();
+  });
+
+  it('should be defined', () => {
     expect(controller).toBeDefined();
   });
 
   it('should warmup the server', () => {
-    const controller = module.get<AppController>(AppController);
-
     expect(controller.warmup()).toBe(`Warming up the application server`);
   });
 });
