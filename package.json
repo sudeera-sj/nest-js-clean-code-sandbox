@@ -1,6 +1,6 @@
 {
   "name": "nest-js-clean-code-sandbox",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A clean code sandbox developed with NestJs",
   "private": true,
   "license": "UNLICENSED",
@@ -73,6 +73,9 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
+    "coveragePathIgnorePatterns": [
+      ".module.ts"
+    ],
     "testEnvironment": "node",
     "moduleNameMapper": {
       "^@app/(.*)$": "<rootDir>/app/$1",
